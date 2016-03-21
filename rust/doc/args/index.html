@@ -55,9 +55,9 @@ registering possible command line options via the <code>flag(...)</code> and <co
 methods. Once all options have been registered, parse arguments directly from the
 command line, or provide a vector of your own arguments.</p>
 
-<p>If any errors are encountered during parsing the method will panic, otherwise,
-arguments can be retrieved from the <code>args</code> instance by calling <code>value_of(...)</code>
-or <code>validated_value_of(...)</code>.</p>
+<p>Any errors encountered during parsing will be returned wrapped in an <code>ArgsError</code>.
+If there are no errors during parsing values may be retrieved from the <code>args</code>
+object by simply calling <code>value_of(...)</code> and <code>validated_value_of(...)</code>.</p>
 
 <p>That&#39;s it!</p>
 
@@ -66,7 +66,7 @@ or <code>validated_value_of(...)</code>.</p>
 used by adding <code>args</code> to the dependencies in your project&#39;s <code>Cargo.toml</code>.</p>
 
 <pre><code class="language-toml">[dependencies]
-args = &quot;0.1&quot;
+args = &quot;1.0&quot;
 </code></pre>
 
 <p>and this to your crate root:</p>
