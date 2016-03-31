@@ -353,9 +353,49 @@
 <span id="310">310</span>
 <span id="311">311</span>
 <span id="312">312</span>
+<span id="313">313</span>
+<span id="314">314</span>
+<span id="315">315</span>
+<span id="316">316</span>
+<span id="317">317</span>
+<span id="318">318</span>
+<span id="319">319</span>
+<span id="320">320</span>
+<span id="321">321</span>
+<span id="322">322</span>
+<span id="323">323</span>
+<span id="324">324</span>
+<span id="325">325</span>
+<span id="326">326</span>
+<span id="327">327</span>
+<span id="328">328</span>
+<span id="329">329</span>
+<span id="330">330</span>
+<span id="331">331</span>
+<span id="332">332</span>
+<span id="333">333</span>
+<span id="334">334</span>
+<span id="335">335</span>
+<span id="336">336</span>
+<span id="337">337</span>
+<span id="338">338</span>
+<span id="339">339</span>
+<span id="340">340</span>
+<span id="341">341</span>
+<span id="342">342</span>
+<span id="343">343</span>
+<span id="344">344</span>
+<span id="345">345</span>
+<span id="346">346</span>
+<span id="347">347</span>
+<span id="348">348</span>
+<span id="349">349</span>
+<span id="350">350</span>
+<span id="351">351</span>
+<span id="352">352</span>
+<span id="353">353</span>
 </pre><pre class='rust '>
 <span class='comment'>// Copyright 2016 Matthew Fornaciari &lt;mattforni@gmail.com&gt;</span>
-<span class='doccomment'>//!</span>
 <span class='doccomment'>//! A dead simple implementation of command line argument parsing and validation</span>
 <span class='doccomment'>//! built on top of the [getopts](https://crates.io/crates/getopts) crate.</span>
 <span class='doccomment'>//!</span>
@@ -364,9 +404,9 @@
 <span class='doccomment'>//! methods. Once all options have been registered, parse arguments directly from the</span>
 <span class='doccomment'>//! command line, or provide a vector of your own arguments.</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! If any errors are encountered during parsing the method will panic, otherwise,</span>
-<span class='doccomment'>//! arguments can be retrieved from the `args` instance by calling `value_of(...)`</span>
-<span class='doccomment'>//! or `validated_value_of(...)`.</span>
+<span class='doccomment'>//! Any errors encountered during parsing will be returned wrapped in an `ArgsError`.</span>
+<span class='doccomment'>//! If there are no errors during parsing values may be retrieved from the `args`</span>
+<span class='doccomment'>//! object by simply calling `value_of(...)` and `validated_value_of(...)`.</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! That&#39;s it!</span>
 <span class='doccomment'>//!</span>
@@ -377,7 +417,7 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! ```toml</span>
 <span class='doccomment'>//! [dependencies]</span>
-<span class='doccomment'>//! args = &quot;0.1&quot;</span>
+<span class='doccomment'>//! args = &quot;2.0&quot;</span>
 <span class='doccomment'>//! ```</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! and this to your crate root:</span>
@@ -392,21 +432,24 @@
 <span class='doccomment'>//! requires a number of iterations between zero *(0)* and ten *(10)* to be specified,</span>
 <span class='doccomment'>//! accepts an optional log file name and responds to the help flag.</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! ```{.rust}</span>
+<span class='doccomment'>//! ```rust</span>
 <span class='doccomment'>//! extern crate args;</span>
 <span class='doccomment'>//! extern crate getopts;</span>
 <span class='doccomment'>//!</span>
-<span class='doccomment'>//! use args::{Args,ArgsError,Order,OrderValidation};</span>
 <span class='doccomment'>//! use getopts::Occur;</span>
 <span class='doccomment'>//!</span>
+<span class='doccomment'>//! use args::{Args,ArgsError};</span>
+<span class='doccomment'>//! use args::validations::{Order,OrderValidation};</span>
+<span class='doccomment'>//!</span>
+<span class='doccomment'>//! const PROGRAM_DESC: &amp;&#39;static str = &quot;Run this program&quot;;</span>
 <span class='doccomment'>//! const PROGRAM_NAME: &amp;&#39;static str = &quot;program&quot;;</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! fn main() {</span>
-<span class='doccomment'>//!     parse(&amp;vec!(&quot;-i&quot;, &quot;15&quot;));</span>
+<span class='doccomment'>//!     parse(&amp;vec!(&quot;-i&quot;, &quot;5&quot;));</span>
 <span class='doccomment'>//! }</span>
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//! fn parse(input: &amp;Vec&lt;&amp;str&gt;) -&gt; Result&lt;(), ArgsError&gt; {</span>
-<span class='doccomment'>//!     let mut args = Args::new(PROGRAM_NAME);</span>
+<span class='doccomment'>//!     let mut args = Args::new(PROGRAM_NAME, PROGRAM_DESC);</span>
 <span class='doccomment'>//!     args.flag(&quot;h&quot;, &quot;help&quot;, &quot;Print the usage menu&quot;);</span>
 <span class='doccomment'>//!     args.option(&quot;i&quot;,</span>
 <span class='doccomment'>//!         &quot;iter&quot;,</span>
@@ -425,7 +468,7 @@
 <span class='doccomment'>//!</span>
 <span class='doccomment'>//!     let help = try!(args.value_of(&quot;help&quot;));</span>
 <span class='doccomment'>//!     if help {</span>
-<span class='doccomment'>//!         args.full_usage(&amp;format!(&quot;How to use {}&quot;, PROGRAM_NAME));</span>
+<span class='doccomment'>//!         args.full_usage();</span>
 <span class='doccomment'>//!         return Ok(());</span>
 <span class='doccomment'>//!     }</span>
 <span class='doccomment'>//!</span>
@@ -453,48 +496,52 @@
 <span class='kw'>extern</span> <span class='kw'>crate</span> <span class='ident'>getopts</span>;
 
 <span class='kw'>use</span> <span class='ident'>getopts</span>::{<span class='ident'>Fail</span>,<span class='ident'>HasArg</span>,<span class='ident'>Occur</span>,<span class='ident'>Options</span>};
-<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>HashMap</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>BTreeMap</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>collections</span>::<span class='ident'>btree_map</span>::<span class='ident'>Iter</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>env</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>ffi</span>::<span class='ident'>OsStr</span>;
+<span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>fmt</span>::{<span class='self'>self</span>,<span class='ident'>Display</span>,<span class='ident'>Formatter</span>};
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>iter</span>::<span class='ident'>IntoIterator</span>;
 <span class='kw'>use</span> <span class='ident'>std</span>::<span class='ident'>str</span>::<span class='ident'>FromStr</span>;
 
 <span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>errors</span>::<span class='ident'>ArgsError</span>;
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>validations</span>::{<span class='ident'>Order</span>,<span class='ident'>Validation</span>,<span class='ident'>OrderValidation</span>};
-<span class='kw'>pub</span> <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>traits</span>::<span class='ident'>HasArgs</span>;
 
 <span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>options</span>::<span class='ident'>Opt</span>;
+<span class='kw'>use</span> <span class='self'>self</span>::<span class='ident'>validations</span>::<span class='ident'>Validation</span>;
 
-<span class='kw'>const</span> <span class='ident'>SCOPE_PARSE</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> <span class='op'>=</span> <span class='string'>&quot;parse&quot;</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>traits</span>;
+<span class='kw'>pub</span> <span class='kw'>mod</span> <span class='ident'>validations</span>;
 
 <span class='kw'>mod</span> <span class='ident'>errors</span>;
 <span class='kw'>mod</span> <span class='ident'>options</span>;
-<span class='kw'>mod</span> <span class='ident'>traits</span>;
-<span class='kw'>mod</span> <span class='ident'>validations</span>;
-
 <span class='attribute'>#[<span class='ident'>cfg</span>(<span class='ident'>test</span>)]</span> <span class='kw'>mod</span> <span class='ident'>tst</span>;
+
+<span class='kw'>const</span> <span class='ident'>COLUMN_WIDTH</span>: <span class='ident'>usize</span> <span class='op'>=</span> <span class='number'>20</span>;
+<span class='kw'>const</span> <span class='ident'>SCOPE_PARSE</span>: <span class='kw-2'>&amp;</span><span class='lifetime'>&#39;static</span> <span class='ident'>str</span> <span class='op'>=</span> <span class='string'>&quot;parse&quot;</span>;
 
 <span class='doccomment'>/// A dead simple implementation of command line argument parsing and validation.</span>
 <span class='kw'>pub</span> <span class='kw'>struct</span> <span class='ident'>Args</span> {
+    <span class='ident'>description</span>: <span class='ident'>String</span>,
     <span class='ident'>options</span>: <span class='ident'>Options</span>,
-    <span class='ident'>opts</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>Opt</span><span class='op'>&gt;</span>,
+    <span class='ident'>opts</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>Opt</span><span class='op'>&gt;</span>,
     <span class='ident'>opt_names</span>: <span class='ident'>Vec</span><span class='op'>&lt;</span><span class='ident'>String</span><span class='op'>&gt;</span>,
     <span class='ident'>program_name</span>: <span class='ident'>String</span>,
-    <span class='ident'>values</span>: <span class='ident'>HashMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;</span>
+    <span class='ident'>values</span>: <span class='ident'>BTreeMap</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;</span>
 }
 
 <span class='kw'>impl</span> <span class='ident'>Args</span> {
     <span class='comment'>// Public associated methods</span>
     <span class='doccomment'>/// Creates an empty set of command line options.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>program_name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>Args</span> {
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>new</span>(<span class='ident'>program_name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>, <span class='ident'>description</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>Args</span> {
         <span class='macro'>debug</span><span class='macro'>!</span>(<span class='string'>&quot;Creating new args object for &#39;{}&#39;&quot;</span>, <span class='ident'>program_name</span>);
 
         <span class='ident'>Args</span> {
+            <span class='ident'>description</span>: <span class='ident'>description</span>.<span class='ident'>to_string</span>(),
             <span class='ident'>options</span>: <span class='ident'>Options</span>::<span class='ident'>new</span>(),
-            <span class='ident'>opts</span>: <span class='ident'>HashMap</span>::<span class='ident'>new</span>(),
+            <span class='ident'>opts</span>: <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>(),
             <span class='ident'>opt_names</span>: <span class='ident'>Vec</span>::<span class='ident'>new</span>(),
             <span class='ident'>program_name</span>: <span class='ident'>program_name</span>.<span class='ident'>to_string</span>(),
-            <span class='ident'>values</span>: <span class='ident'>HashMap</span>::<span class='ident'>new</span>()
+            <span class='ident'>values</span>: <span class='ident'>BTreeMap</span>::<span class='ident'>new</span>()
         }
     }
 
@@ -523,13 +570,18 @@
     }
 
     <span class='doccomment'>/// Generates a combination of the short and verbose usage messages.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>full_usage</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>brief</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-        <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}\n\n{}&quot;</span>, <span class='self'>self</span>.<span class='ident'>short_usage</span>(), <span class='self'>self</span>.<span class='ident'>usage</span>(<span class='ident'>brief</span>))
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>full_usage</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+        <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}\n\n{}&quot;</span>, <span class='self'>self</span>.<span class='ident'>short_usage</span>(), <span class='self'>self</span>.<span class='ident'>usage</span>())
     }
 
     <span class='doccomment'>/// Returns a `bool` indicating whether or not a argument is present.</span>
     <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>has_value</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>opt_name</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>bool</span> {
         <span class='self'>self</span>.<span class='ident'>values</span>.<span class='ident'>get</span>(<span class='ident'>opt_name</span>).<span class='ident'>is_some</span>()
+    }
+
+    <span class='doccomment'>/// Returns an iterator visiting all key-value pairs in alphabetical order.</span>
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>iter</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>Iter</span><span class='op'>&lt;</span><span class='ident'>String</span>, <span class='ident'>String</span><span class='op'>&gt;</span> {
+        <span class='self'>self</span>.<span class='ident'>values</span>.<span class='ident'>iter</span>()
     }
 
     <span class='doccomment'>/// Registers an option explicitly.</span>
@@ -615,8 +667,8 @@
     }
 
     <span class='doccomment'>/// Generates a verbose usage summary from the registered options.</span>
-    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>usage</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>brief</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
-        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>usage</span>(<span class='ident'>brief</span>)
+    <span class='kw'>pub</span> <span class='kw'>fn</span> <span class='ident'>usage</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+        <span class='self'>self</span>.<span class='ident'>options</span>.<span class='ident'>usage</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>.<span class='ident'>description</span>)
     }
 
     <span class='doccomment'>/// Retrieves the value of the `Opt` identified by `opt_name`, casts it to</span>
@@ -665,6 +717,36 @@
     }
 }
 
+<span class='kw'>impl</span> <span class='ident'>Display</span> <span class='kw'>for</span> <span class='ident'>Args</span> {
+    <span class='kw'>fn</span> <span class='ident'>fmt</span>(<span class='kw-2'>&amp;</span><span class='self'>self</span>, <span class='ident'>f</span>: <span class='kw-2'>&amp;</span><span class='kw-2'>mut</span> <span class='ident'>Formatter</span>) <span class='op'>-&gt;</span> <span class='ident'>fmt</span>::<span class='prelude-ty'>Result</span> {
+        <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>display</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+        <span class='ident'>display</span>.<span class='ident'>push_str</span>(<span class='kw-2'>&amp;</span><span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}\n{}&quot;</span>,
+            <span class='ident'>to_column</span>(<span class='string'>&quot;Args&quot;</span>), <span class='ident'>column_underline</span>()));
+        <span class='kw'>for</span> (<span class='ident'>key</span>, <span class='ident'>value</span>) <span class='kw'>in</span> <span class='self'>self</span>.<span class='ident'>values</span>.<span class='ident'>clone</span>() {
+            <span class='ident'>display</span>.<span class='ident'>push_str</span>(<span class='kw-2'>&amp;</span><span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;\n{}\t{}&quot;</span>,
+                <span class='ident'>to_column</span>(<span class='kw-2'>&amp;</span><span class='ident'>key</span>), <span class='ident'>to_column</span>(<span class='kw-2'>&amp;</span><span class='ident'>value</span>)));
+        }
+        <span class='macro'>write</span><span class='macro'>!</span>(<span class='ident'>f</span>, <span class='string'>&quot;{}&quot;</span>, <span class='ident'>display</span>)
+    }
+}
+
+<span class='comment'>// Private associated methods</span>
+<span class='kw'>fn</span> <span class='ident'>column_underline</span>() <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>underline</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+    <span class='kw'>for</span> _ <span class='kw'>in</span> <span class='number'>0</span>..<span class='ident'>COLUMN_WIDTH</span> { <span class='ident'>underline</span>.<span class='ident'>push_str</span>(<span class='string'>&quot;=&quot;</span>); }
+    <span class='ident'>underline</span>
+}
+
+<span class='kw'>fn</span> <span class='ident'>to_column</span>(<span class='ident'>string</span>: <span class='kw-2'>&amp;</span><span class='ident'>str</span>) <span class='op'>-&gt;</span> <span class='ident'>String</span> {
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>string</span> <span class='op'>=</span> <span class='ident'>string</span>.<span class='ident'>to_string</span>();
+    <span class='ident'>string</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='ident'>string</span>.<span class='ident'>len</span>() <span class='op'>&gt;</span> <span class='ident'>COLUMN_WIDTH</span> {
+        <span class='ident'>string</span>.<span class='ident'>truncate</span>(<span class='ident'>COLUMN_WIDTH</span><span class='op'>-</span> <span class='number'>3</span>);
+        <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}...&quot;</span>, <span class='ident'>string</span>)
+    } <span class='kw'>else</span> { <span class='ident'>string</span> };
+    <span class='kw'>let</span> <span class='kw-2'>mut</span> <span class='ident'>spaces</span> <span class='op'>=</span> <span class='ident'>String</span>::<span class='ident'>new</span>();
+    <span class='kw'>for</span> _ <span class='kw'>in</span> <span class='number'>0</span>..(<span class='ident'>COLUMN_WIDTH</span> <span class='op'>-</span> <span class='ident'>string</span>.<span class='ident'>len</span>()) { <span class='ident'>spaces</span>.<span class='ident'>push_str</span>(<span class='string'>&quot; &quot;</span>); }
+    <span class='macro'>format</span><span class='macro'>!</span>(<span class='string'>&quot;{}{}&quot;</span>, <span class='ident'>string</span>, <span class='ident'>spaces</span>)
+}
 
 </pre>
 </section>

@@ -1,3 +1,8 @@
 .DS_Store
 *.swp
+core
+libc
+getopts
+log
+.lock
 

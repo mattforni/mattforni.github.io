@@ -1,0 +1,1 @@
+initSidebarItems({"trait":[["HasParsedArgs","A trait designed to bind parsed arguments and instance methods to a struct."]]});
