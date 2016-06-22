@@ -1,0 +1,1 @@
+initSidebarItems({"fn":[["create","Recursively creates the directory indicated by the provided path if it does not exist, otherwise it short circuits and returns immediately."],["delete","Idempotently deletes the file indicated by the provided path."]]});

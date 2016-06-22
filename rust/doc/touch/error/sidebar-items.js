@@ -1,0 +1,1 @@
+initSidebarItems({"struct":[["Error","An implementation of `Error` which may or may not include a cause."]]});
