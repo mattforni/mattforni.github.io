@@ -26,7 +26,7 @@
     
 
     <nav class="sidebar">
-        <a href='../../args/index.html'><img src='https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png' alt='' width='100'></a>
+        <a href='../../args/index.html'><img src='https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png' alt='logo' width='100'></a>
         <p class='location'><a href='../index.html'>args</a></p><script>window.sidebarCurrent = {name: 'validations', ty: 'mod', relpath: '../'};</script><script defer src="../sidebar-items.js"></script>
     </nav>
 
@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-57' class='srclink' href='../../src/args/validations/mod.rs.html#1-99' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-57' class='srclink' href='../../src/args/src/validations/mod.rs.html#1-101' title='goto source code'>[src]</a></span></h1>
 <div class='docblock'><p>A module containing enums and traits associated with argument validation.</p>
 </div><h2 id='structs' class='section-header'><a href="#structs">Structs</a></h2>
 <table>
@@ -57,7 +57,6 @@
                              <p>An implementation of <code>Validation</code> which tests whether or not a value adheres
 to the provided <code>order</code> and <code>bound</code>. It should be noted that the type of
 <code>bound</code>, <code>O</code>, must implement <code>Clone</code>, <code>Display</code> <strong>and</strong> <code>PartialOrd</code>.</p>
-
                         </td>
                     </tr>
                 </table><h2 id='enums' class='section-header'><a href="#enums">Enums</a></h2>
@@ -67,7 +66,6 @@ to the provided <code>order</code> and <code>bound</code>. It should be noted th
                                title='args::validations::Order'>Order</a></td>
                         <td class='docblock short'>
                              <p>The relationship to use when validating an <code>OrderValidation</code>.</p>
-
                         </td>
                     </tr>
                 </table><h2 id='traits' class='section-header'><a href="#traits">Traits</a></h2>
@@ -77,7 +75,6 @@ to the provided <code>order</code> and <code>bound</code>. It should be noted th
                                title='args::validations::Validation'>Validation</a></td>
                         <td class='docblock short'>
                              <p>A trait designed to provide validation for command line argument parsing.</p>
-
                         </td>
                     </tr>
                 </table></section>
@@ -123,7 +120,7 @@ to the provided <code>order</code> and <code>bound</code>. It should be noted th
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>

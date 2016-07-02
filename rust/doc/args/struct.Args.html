@@ -26,7 +26,7 @@
     
 
     <nav class="sidebar">
-        <a href='../args/index.html'><img src='https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png' alt='' width='100'></a>
+        <a href='../args/index.html'><img src='https://www.rust-lang.org/logos/rust-logo-128x128-blk-v2.png' alt='logo' width='100'></a>
         <p class='location'><a href='index.html'>args</a></p><script>window.sidebarCurrent = {name: 'Args', ty: 'struct', relpath: ''};</script><script defer src="sidebar-items.js"></script>
     </nav>
 
@@ -46,7 +46,7 @@
             <a id="toggle-all-docs" href="javascript:void(0)" title="collapse all docs">
                 [<span class='inner'>&#x2212;</span>]
             </a>
-        </span><a id='src-201' class='srclink' href='../src/args/lib.rs.html#126-133' title='goto source code'>[src]</a></span></h1>
+        </span><a id='src-255' class='srclink' href='../src/args/src/lib.rs.html#134-141' title='goto source code'>[src]</a></span></h1>
 <pre class='rust struct'>pub struct Args {
     // some fields omitted
 }</pre><div class='docblock'><p>A dead simple implementation of command line argument parsing and validation.</p>
@@ -62,6 +62,8 @@
 </ul>
 </div><h4 id='method.full_usage' class='method'><code>fn <a href='#method.full_usage' class='fnname'>full_usage</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a></code></h4>
 <div class='docblock'><p>Generates a combination of the short and verbose usage messages.</p>
+</div><h4 id='method.has_options' class='method'><code>fn <a href='#method.has_options' class='fnname'>has_options</a>(&amp;self) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
+<div class='docblock'><p>Returns a <code>bool</code> indicating whether or not any options are registered.</p>
 </div><h4 id='method.has_value' class='method'><code>fn <a href='#method.has_value' class='fnname'>has_value</a>(&amp;self, opt_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.bool.html'>bool</a></code></h4>
 <div class='docblock'><p>Returns a <code>bool</code> indicating whether or not a argument is present.</p>
 </div><h4 id='method.iter' class='method'><code>fn <a href='#method.iter' class='fnname'>iter</a>(&amp;self) -&gt; <a class='struct' href='https://doc.rust-lang.org/nightly/collections/btree/map/struct.Iter.html' title='collections::btree::map::Iter'>Iter</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>, <a class='struct' href='https://doc.rust-lang.org/nightly/collections/string/struct.String.html' title='collections::string::String'>String</a>&gt;</code></h4>
@@ -100,12 +102,19 @@ the type specified by <code>T</code> and then runs all provided <code>Validation
 <p>Returns <code>Err(ArgsError)</code> if no <code>Opt</code> correspond to <code>opt_name</code>, if the value cannot
 be cast to type <code>T</code> or if any validation is considered invalid.</p>
 </div><h4 id='method.value_of' class='method'><code>fn <a href='#method.value_of' class='fnname'>value_of</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html' title='core::str::FromStr'>FromStr</a>&gt;(&amp;self, opt_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;T, <a class='struct' href='../args/struct.ArgsError.html' title='args::ArgsError'>ArgsError</a>&gt;</code></h4>
-<div class='docblock'><p>Retrieves the value of the <code>Opt</code> identified by <code>opt_name</code> and casts it to
+<div class='docblock'><p>Retrieves the value for the <code>Opt</code> identified by <code>opt_name</code> and casts it to
 the type specified by <code>T</code>.</p>
 
 <h1 id='failures-3' class='section-header'><a href='#failures-3'>Failures</a></h1>
 <p>Returns <code>Err(ArgsError)</code> if no <code>Opt</code> corresponds to <code>opt_name</code> or if the
 value cannot be cast to type <code>T</code>.</p>
+</div><h4 id='method.values_of' class='method'><code>fn <a href='#method.values_of' class='fnname'>values_of</a>&lt;T: <a class='trait' href='https://doc.rust-lang.org/nightly/core/str/trait.FromStr.html' title='core::str::FromStr'>FromStr</a>&gt;(&amp;self, opt_name: &amp;<a class='primitive' href='https://doc.rust-lang.org/nightly/std/primitive.str.html'>str</a>) -&gt; <a class='enum' href='https://doc.rust-lang.org/nightly/core/result/enum.Result.html' title='core::result::Result'>Result</a>&lt;<a class='struct' href='https://doc.rust-lang.org/nightly/collections/vec/struct.Vec.html' title='collections::vec::Vec'>Vec</a>&lt;T&gt;, <a class='struct' href='../args/struct.ArgsError.html' title='args::ArgsError'>ArgsError</a>&gt;</code></h4>
+<div class='docblock'><p>Retrieves a vector of values for the <code>Opt</code> identified by <code>opt_name</code> and
+casts each of them to the type specified by <code>T</code>.</p>
+
+<h1 id='failures-4' class='section-header'><a href='#failures-4'>Failures</a></h1>
+<p>Returns <code>Err(ArgsError)</code> if no <code>Opt</code> corresponds to <code>opt_name</code> or if any
+of the values cannot be cast to type <code>T</code>.</p>
 </div></div><h2 id='implementations'>Trait Implementations</h2><h3 class='impl'><code>impl <a class='trait' href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html' title='core::fmt::Display'>Display</a> for <a class='struct' href='../args/struct.Args.html' title='args::Args'>Args</a></code></h3><div class='impl-items'><h4 id='method.fmt' class='method'><code>fn <a href='https://doc.rust-lang.org/nightly/core/fmt/trait.Display.html#method.fmt' class='fnname'>fmt</a>(&amp;self, f: &amp;mut <a class='struct' href='https://doc.rust-lang.org/nightly/core/fmt/struct.Formatter.html' title='core::fmt::Formatter'>Formatter</a>) -&gt; <a class='type' href='https://doc.rust-lang.org/nightly/core/fmt/type.Result.html' title='core::fmt::Result'>Result</a></code></h4>
 </div></section>
     <section id='search' class="content hidden"></section>
@@ -150,7 +159,7 @@ value cannot be cast to type <code>T</code>.</p>
 
                 <p>
                     Search functions by type signature (e.g.
-                    <code>vec -> usize</code>)
+                    <code>vec -> usize</code> or <code>* -> vec</code>)
                 </p>
             </div>
         </div>
