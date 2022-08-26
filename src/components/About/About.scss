@@ -1,11 +1,14 @@
 @import '../../themes/default';
 
+$width-hello-name-tag: 250px;
+
 div.About {
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  margin-bottom: $space-large;
-  max-width: $layout-content-width;
+  padding: $space-xx-large $space-large;
+
+  img {
+    height: 375px;
+  }
 
   div.HelloNameTag {
     @include border-radius($space-medium);
@@ -16,10 +19,9 @@ div.About {
     display: flex;
     flex-direction: column;
     font-variant: all-petite-caps;
-    margin-bottom: $space-xxx-large;
-    max-height: 225px;
-    max-width: 350px;
-    padding-bottom: $space-large;
+    max-height: 200px;
+    min-height: 200px;
+    max-width: $width-hello-name-tag;
     text-align: center;
 
     div.HelloNameTagHeader {
@@ -35,20 +37,23 @@ div.About {
       background-color: $color-white;
       color: $color-black;
       font-family: 'PermanentMarker';
-      font-size: $size-xx-large;
-      padding: 0 $space-xx-large;
+      font-size: $size-x-large;
+      padding: 0 $space-large;
     }
   }
 
   div.AboutContent {
     @include border-radius;
     background-color: $color-white-with-opacity-half;
+    display: grid;
+    grid-template-columns: $width-hello-name-tag auto;
+    grid-template-rows: auto auto;
+    justify-content: center;
     margin-bottom: $space-large;
     max-width: $layout-content-width;
-    padding: $space-large;
+    padding: 0 $space-large;
 
     a {
-      @include text-shadow($color-black, 1px, 1px, 2px);
       font-weight: bold;
       &.LinkAmazon {
         color: $color-orange-amazon;
@@ -59,6 +64,15 @@ div.About {
       &.LinkSalesforce {
         color: $color-blue-salesforce;
       }
+    }
+
+    div.AboutContentIntro {
+      padding-left: $space-x-large;
+    }
+
+    div.AboutContentExpansion {
+      grid-column: 1 / span 2;
+      padding-top: $space-xx-large;
     }
   }
 }
