@@ -43,10 +43,7 @@ $timing-normal: 1s;
 
 // Define layout properties
 $layout-content-width: 600px;
-$layout-navigation-width: 150px;
-$layout-navigation-index: 99;
-$layout-header-height: $space-xx-large;
-$layout-title-height: $space-xxx-large;
+$layout-header-height: 300px;
 
 // Define polyfill mixins
 @mixin border-radius($radius: $space-small) {

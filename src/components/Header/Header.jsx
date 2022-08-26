@@ -22,6 +22,13 @@ const SocialLink = (props) => {
 const Header = () => {
   return (
     <div className='Header'>
+      <div className='NavigationBar'>
+        <div className='Logo'>
+          <a href='/'>
+            Matt Forni
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

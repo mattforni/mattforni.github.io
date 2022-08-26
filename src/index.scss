@@ -12,6 +12,13 @@
   font-weight: bold;
 }
 
+@font-face {
+  font-family: 'ProximaNova';
+  src: local('ProximaNova');
+  url: ('assets/fonts/ProximaNova/ProximaNovaFont.otf') format('opentype');
+  font-weight: bold;
+}
+
 body {
   margin: 0;
   font-family: 'Quicksand', 'Roboto', 'Ubuntu', sans-serif;
