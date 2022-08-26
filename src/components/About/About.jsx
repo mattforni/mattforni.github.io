@@ -1,17 +1,19 @@
 import './About.scss';
 import PortraitImage from "../../assets/images/sand-boarding.jpg";
 
-const HelloNameTag = () => {
+const Headshot = () => {
   return (
-    <div className='HelloNameTag'>
-      <div className='HelloNameTagHeader'>
-        Hello
-        <div className='HelloNameTagSubHeader'>
-          my name is
+    <div className='Headshot'>
+      <div className='HelloNameTag'>
+        <div className='HelloNameTagHeader'>
+          Hello
+          <div className='HelloNameTagSubHeader'>
+            my name is
+          </div>
         </div>
-      </div>
-      <div className='HelloNameTagName'>
-        Forni
+        <div className='HelloNameTagName'>
+          Forni
+        </div>
       </div>
     </div>
   );
@@ -26,15 +28,15 @@ const About = () => {
 
   return (
     <div className='About'>
-      <img src={PortraitImage} alt='Portrait Image'/>
+      <Headshot/>
       <div className='AboutContent'>
-        <HelloNameTag/>
-        <div className='AboutContentIntro'>
-          Matthew Fornaciari, better known as Forni, is equal parts outdoorsman and technologist. Born in the Bay Area, he grew up in LA, studied in Providence, and has lived in Seattle, San Francisco, and Denver, before landing in Hobart, TAS, Australia where he currently resides.
-        </div>
-        <div className='AboutContentExpansion'>
-          His professional specialty is helping companies build more reliable computer systems, which he has done at {linkAmazon}, {linkSalesforce}, and most recently a diverse array of Fortune 500 companies via {linkGremlin}, which he founded in January 2016. Matt {linkGoodbyeGremlin} at the end of February 2022 and is currently taking some time to rest and digest that experience while running, swimming, cooking, and generally exploring. You can {linkFindForni} to follow along on his latest adventures.
-        </div>
+        <p>
+          Matthew Fornaciari, better known as Forni, is equal parts outdoorsman and technologist. He is a California native who studied Applied Mathematics & Computer Science in Providence and has lived and worked in Seattle, San Francisco, and Denver, before landing in Hobart, TAS, Australia where he currently resides.
+        </p>
+        <br/>
+        <p>
+          His career has been focused on helping technology companies build more reliable computer systems, which he has done at {linkAmazon}, {linkSalesforce}, and a diverse array of Fortune 500 companies via {linkGremlin} where he served as Founder and CTO starting in January 2016. Matt {linkGoodbyeGremlin} at the end of February 2022 to take some time to rest and digest that experience while running, swimming, cooking, and generally exploring. You can {linkFindForni} to follow along on his latest adventures.
+        </p>
       </div>
     </div>
   );
