@@ -1,0 +1,44 @@
+@import '../../themes/default';
+
+div.Footer {
+  align-items: center;
+  background-color: $color-black;
+  color: $color-white;
+  display: flex;
+  flex-direction: column;
+  padding: $space-medium;
+
+  div.EmailLink {
+    align-items: center;
+    dispay: flex;
+    padding: $space-small;
+    a {
+      color: $color-white;
+    }
+    span {
+      padding: 0 $space-small;
+    }
+  }
+
+  div.SocialLinks {
+    align-items: center;
+    display: flex;
+    height: 100%;
+
+    div.SocialLink {
+      border-bottom: 1px solid white;
+      height: $space-x-large;
+      margin: 0 $space-small;
+      width: $space-x-large;
+
+      &:hover {
+        cursor: pointer;
+      }
+
+      & > img {
+        height: 100%;
+        width: 100%;
+      }
+    }
+  }
+}

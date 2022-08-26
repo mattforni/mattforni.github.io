@@ -1,31 +1,24 @@
 @import '../../themes/default';
 
 div.Header {
-  @include linear-gradient($color-blue-dark 5%, transparent 100%);
-  align-items: center;
-  border-bottom: 1px solid $color-white;
+  background-image: url('../../assets/backgrounds/death-valley-dunes.png');
+  background-repeat: no-repeat;
+  background-size: cover;
   display: flex;
-  justify-content: flex-end;
-  padding: 0 $space-large;
+  flex-direction: column;
+  height: $layout-header-height;
 
-  div.SocialLinks {
-    align-items: center;
-    display: flex;
-    height: 100%;
+  div.NavigationBar {
+    height: $space-x-large;
+    padding: $space-large;
 
-    div.SocialLink {
-      border-bottom: 1px solid white;
-      height: $space-x-large;
-      margin: 0 $space-small;
-      width: $space-x-large;
+    div.Logo {
+      font-size: $size-medium;
+      font-weight: 600;
+      text-transform: uppercase;
 
-      &:hover {
-        cursor: pointer;
-      }
-
-      & > img {
-        height: 100%;
-        width: 100%;
+      a {
+        text-decoration: none;
       }
     }
   }

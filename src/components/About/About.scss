@@ -1,61 +1,81 @@
 @import '../../themes/default';
 
+$height-headshot: 325px;
+$height-hello-name-tag: 100px;
+$width-headshot: 350px;
+$width-hello-name-tag: 150px;
+
 div.About {
-  align-items: center;
   display: flex;
-  flex-direction: column;
-  margin-bottom: $space-large;
+  flex-flow: row wrap;
+  justify-content: center;
   max-width: $layout-content-width;
+  padding: $space-x-large;
 
-  div.HelloNameTag {
-    @include border-radius($space-medium);
-    @include box-shadow;
-    @include rotate(-15deg);
-    background-color: $color-red-dark;
-    color: $color-white;
-    display: flex;
-    flex-direction: column;
-    font-variant: all-petite-caps;
-    margin-bottom: $space-xxx-large;
-    max-height: 225px;
-    max-width: 350px;
-    padding-bottom: $space-large;
-    text-align: center;
+  img {
+    height: 375px;
+  }
 
-    div.HelloNameTagHeader {
-      font-size: $size-large;
-      padding-bottom: $space-large;
+  div.Headshot {
+    background-image: url('../../assets/images/sand-boarding.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    flex-grow: 1;
+    max-height: $height-headshot;
+    min-height: $height-headshot;
+    max-width: $width-headshot;
+    min-width: $width-headshot;
+    margin: $space-small $space-medium;
 
-      div.HelloNameTagSubHeader {
+    div.HelloNameTag {
+      @include border-radius($space-medium);
+      @include box-shadow;
+      @include rotate(-15deg);
+      background-color: $color-red-dark;
+      color: $color-white;
+      display: flex;
+      flex-direction: column;
+      font-variant: all-petite-caps;
+      max-height: $height-hello-name-tag;
+      min-height: $height-hello-name-tag;
+      max-width: $width-hello-name-tag;
+      text-align: center;
+
+      div.HelloNameTagHeader {
         font-size: $size-normal;
-      }
-    }
 
-    div.HelloNameTagName {
-      background-color: $color-white;
-      color: $color-black;
-      font-family: 'PermanentMarker';
-      font-size: $size-xx-large;
-      padding: 0 $space-xx-large;
+        div.HelloNameTagSubHeader {
+          font-size: $size-small;
+        }
+      }
+
+      div.HelloNameTagName {
+        background-color: $color-white;
+        color: $color-black;
+        font-family: 'PermanentMarker';
+        font-size: $size-large;
+      }
     }
   }
 
   div.AboutContent {
-    @include border-radius;
-    background-color: $color-white-with-opacity-half;
-    margin-bottom: $space-large;
-    max-width: $layout-content-width;
-    padding: $space-large;
+    flex-grow: 1;
+    font-size: $size-normal;
+    grid-column: 2 / span 1;
+    margin: $space-medium;
+    max-width: $layout-content-width / 2;
 
     a {
-      @include text-shadow($color-black, 1px, 1px, 2px);
       font-weight: bold;
+
       &.LinkAmazon {
         color: $color-orange-amazon;
       }
+
       &.LinkGremlin {
         color: $color-green-gremlin;
       }
+
       &.LinkSalesforce {
         color: $color-blue-salesforce;
       }
