@@ -16,23 +16,12 @@ const SocialLink = (props) => {
 }
 
 /**
- * The Header component represent the main content window in the application.
+ * The Header component represents the header content in the application.
  * @returns {JSX.Element} The main content of the application.
  */
 const Header = () => {
   return (
     <div className='Header'>
-      <div className='SocialLinks'>
-        <SocialLink name='LinkedIn'
-                    src={LinkedInImage}
-                    link='https://www.linkedin.com/in/mattforni/'/>
-        <SocialLink name='Github'
-                    src={GithubImage}
-                    link='https://github.com/mattforni'/>
-        <SocialLink name='StackOverflow'
-                    src={StackOverflowImage}
-                    link='http://stackoverflow.com/users/2861181/mattforni'/>
-      </div>
     </div>
   );
 }

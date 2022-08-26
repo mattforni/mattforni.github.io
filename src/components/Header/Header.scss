@@ -7,26 +7,4 @@ div.Header {
   display: flex;
   justify-content: flex-end;
   padding: 0 $space-large;
-
-  div.SocialLinks {
-    align-items: center;
-    display: flex;
-    height: 100%;
-
-    div.SocialLink {
-      border-bottom: 1px solid white;
-      height: $space-x-large;
-      margin: 0 $space-small;
-      width: $space-x-large;
-
-      &:hover {
-        cursor: pointer;
-      }
-
-      & > img {
-        height: 100%;
-        width: 100%;
-      }
-    }
-  }
 }
