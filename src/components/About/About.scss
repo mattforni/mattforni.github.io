@@ -1,3 +1,4 @@
+@use "sass:math";
 @import '../../themes/default';
 
 $height-headshot: 325px;
@@ -63,7 +64,7 @@ div.About {
     font-size: $size-normal;
     grid-column: 2 / span 1;
     margin: $space-medium;
-    max-width: $layout-content-width / 2;
+    max-width: math.div($layout-content-width, 2);
 
     a {
       font-weight: bold;

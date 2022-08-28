@@ -1,6 +1,6 @@
 import './Acitivites.scss';
 
-import github from "../../http/github";
+import github from "../../http/gitHubClient";
 import { useEffect, useState } from 'react';
 import moment from 'moment';
 

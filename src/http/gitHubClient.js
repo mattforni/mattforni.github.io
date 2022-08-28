@@ -5,9 +5,9 @@ const HEADERS = {
 }
 
 // Exports all methods by default
-export default {
+const GitHubClient = {
     /**
-     * Creates a GET request for the public events for my Github user (mattforni)
+     * Creates a GET request for the public events for my GitHub user (mattforni)
      */
     getPublicEvents() {
         return axios.get(
@@ -17,3 +17,5 @@ export default {
             })
     }
 }
+
+export default GitHubClient;
