@@ -1,5 +1,5 @@
 import {
-  BrowserRouter as Router,
+  StaticRouter as Router,
 } from 'react-router-dom';
 
 import './App.scss';
