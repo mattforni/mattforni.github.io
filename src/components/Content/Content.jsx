@@ -1,22 +1,8 @@
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
 
 import './Content.scss';
 import About from "../About";
 import Activities from "../Activities";
-
-/**
- * The NotFound component is displayed when the provided path has no match.
- * @returns {JSX.Element} A very simple component that indicates the route is not found.
- */
-const NotFound = () => {
-  return (
-    <div>
-      <h1>
-        Not Found
-      </h1>
-    </div>
-  )
-}
 
 /**
  * The Content component represent the main content window in the application.
@@ -29,12 +15,10 @@ const Content = () => {
         <Route exact path='/'>
           <About />
         </Route>
-        <Route path='/activities'>
+        <Route exact path='/activities'>
           <Activities />
         </Route>
-        <Route path='*'>
-          <NotFound />
-        </Route>
+        <Redirect from="*" to="/" />
       </Switch>
     </div>
   );

@@ -1,5 +1,5 @@
 import {
-  StaticRouter as Router,
+  MemoryRouter as Router,
 } from 'react-router-dom';
 
 import './App.scss';
