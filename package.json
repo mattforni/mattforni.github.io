@@ -1,7 +1,6 @@
 {
   "name": "mattforni.com",
   "version": "0.1.0",
-  "homepage": "https://mattforni.github.io/react-mattforni.com",
   "private": true,
   "engines": {
     "node": "17.x"
