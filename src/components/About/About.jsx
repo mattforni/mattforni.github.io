@@ -1,9 +1,5 @@
 import './About.scss';
-
-const Link = (href, text) => {
-  const className = text.split(' ').length > 1 ? '' : 'Link'+text;
-  return <a href={href} target='_blank' rel='noreferrer' className={className}>{text}</a>;
-}
+import PortraitImage from "../../assets/images/sand-boarding.jpg";
 
 const Headshot = () => {
   return (
@@ -24,11 +20,11 @@ const Headshot = () => {
 }
 
 const About = () => {
-  const linkAmazon= Link('https://amazon.com', 'Amazon');
-  const linkGremlin = Link('https://gremlin.com', 'Gremlin');
-  const linkSalesforce = Link('https://salesforce.com', 'Salesforce');
-  const linkFindForni = Link('http://findforni.info/', 'check out his Garmin live map');
-  const linkGoodbyeGremlin = Link('https://medium.com/@callmeforni/goodbye-gremlin-hello-world-b119abd3d370', 'left Gremlin');
+  const linkAmazon = <a href='https://amazon.com' target='_blank' class='LinkAmazon'>Amazon</a>;
+  const linkGremlin = <a href='https://gremlin.com' target='_blank' class='LinkGremlin'>Gremlin</a>;
+  const linkSalesforce = <a href='https://salesforce.com' target='_blank' class='LinkSalesforce'>Salesforce</a>;
+  const linkFindForni = <a href='http://findforni.info/' target='_blank'>check out his Garmin live map</a>;
+  const linkGoodbyeGremlin = <a href='https://medium.com/@callmeforni/goodbye-gremlin-hello-world-b119abd3d370' target='_blank'>left Gremlin</a>;
 
   return (
     <div className='About'>

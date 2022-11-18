@@ -1,3 +1,7 @@
+import {
+  BrowserRouter as Router,
+} from 'react-router-dom';
+
 import './App.scss';
 
 import Content from '../Content';
@@ -14,9 +18,11 @@ document.title = 'mattforni.com';
 const App = () => {
   return (
     <div className='App'>
-      <Header />
-      <Content />
-      <Footer />
+      <Router>
+        <Header />
+        <Content />
+        <Footer />
+      </Router>
     </div>
   );
 }
