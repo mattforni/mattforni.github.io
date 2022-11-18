@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/react-mattforni.com/static/css/main.8881bd56.css",
-    "main.js": "/react-mattforni.com/static/js/main.8671da52.js",
-    "static/media/death-valley-dunes.png": "/react-mattforni.com/static/media/death-valley-dunes.c773c1c7a3a3bcfd6db1.png",
-    "static/media/sand-boarding.jpg": "/react-mattforni.com/static/media/sand-boarding.9969584a55babac41838.jpg",
-    "static/media/Quicksand-VariableFont.ttf": "/react-mattforni.com/static/media/Quicksand-VariableFont.92e1d0f3321b53e20d2b.ttf",
-    "static/media/PermanentMarker-Regular.ttf": "/react-mattforni.com/static/media/PermanentMarker-Regular.109a10dca0508e41aa12.ttf",
-    "static/media/github.png": "/react-mattforni.com/static/media/github.326ab2f0e52f3c72e87e.png",
-    "static/media/stackoverflow.png": "/react-mattforni.com/static/media/stackoverflow.66e6ae6de072c72ca95f.png",
-    "static/media/linkedin.png": "/react-mattforni.com/static/media/linkedin.deac9b8169b5ca5b51d8.png",
-    "index.html": "/react-mattforni.com/index.html",
-    "main.8881bd56.css.map": "/react-mattforni.com/static/css/main.8881bd56.css.map",
-    "main.8671da52.js.map": "/react-mattforni.com/static/js/main.8671da52.js.map"
+    "main.css": "/static/css/main.4c2d5dd3.css",
+    "main.js": "/static/js/main.59035318.js",
+    "static/media/death-valley-dunes.png": "/static/media/death-valley-dunes.c773c1c7a3a3bcfd6db1.png",
+    "static/media/sand-boarding.jpg": "/static/media/sand-boarding.9969584a55babac41838.jpg",
+    "static/media/Quicksand-VariableFont.ttf": "/static/media/Quicksand-VariableFont.92e1d0f3321b53e20d2b.ttf",
+    "static/media/PermanentMarker-Regular.ttf": "/static/media/PermanentMarker-Regular.109a10dca0508e41aa12.ttf",
+    "static/media/github.png": "/static/media/github.326ab2f0e52f3c72e87e.png",
+    "static/media/stackoverflow.png": "/static/media/stackoverflow.66e6ae6de072c72ca95f.png",
+    "static/media/linkedin.png": "/static/media/linkedin.deac9b8169b5ca5b51d8.png",
+    "index.html": "/index.html",
+    "main.4c2d5dd3.css.map": "/static/css/main.4c2d5dd3.css.map",
+    "main.59035318.js.map": "/static/js/main.59035318.js.map"
   },
   "entrypoints": [
-    "static/css/main.8881bd56.css",
-    "static/js/main.8671da52.js"
+    "static/css/main.4c2d5dd3.css",
+    "static/js/main.59035318.js"
   ]
 }
