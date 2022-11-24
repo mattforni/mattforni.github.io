@@ -1,8 +1,8 @@
 # TODO
-- Merge the old website and the new website
+- ~~Merge the old website and the new website~~
 - Investigate grid layouts instead of flex
 - (Optional) Update the core layout to use a grid layout
-- Migrate to another type of [React Router with history](https://create-react-app.dev/docs/deployment/#notes-on-client-side-routing)
+- Create a `Media` page with Podcasts & Articles 
 
 # Considerations
 - Consider using [`yahoo-finance`](https://www.npmjs.com/package/yahoo-finance) for some investment analysis
