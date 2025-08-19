@@ -13,7 +13,7 @@ const GitHubClient = {
         return axios.get(
             'https://api.github.com/users/mattforni/events/public',
             {
-                header: HEADERS
+                headers: HEADERS
             })
     }
 }

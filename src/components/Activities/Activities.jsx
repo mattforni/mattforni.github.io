@@ -1,7 +1,7 @@
-import './Acitivites.scss';
+import './Activities.scss';
 
 import github from "../../http/gitHubClient";
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import moment from 'moment';
 
 const ACTIVITY_TYPE_GITHUB = 'GitHub';
@@ -13,6 +13,31 @@ const Activities = () => {
   // Create state for the types of activities that can be displayed
   const [githubActivities, setGithubActivities] = useState(null);
   const [githubSelected, setGithubSelected] = useState(true);
+
+  /**
+   * Adds a list of activity components to the list of days
+   *
+   * @param activities The list of activity components to add
+   */
+  const addActivities = useCallback((activities) => {
+    setActivityDays(prevActivityDays => {
+      return Object.values(
+        activities.reduce((activityMap, activity) => {
+          const date = activity.props.date.format('YYYY-MM-DD');
+          if (!activityMap.hasOwnProperty(date)) {
+            activityMap[date] = <ActivityDay date={date} activities={[]}/>;
+          }
+          activityMap[date].props.activities.push(activity)
+          return activityMap
+        }, prevActivityDays)
+      ).sort((activity1, activity2) => {
+        if (activity1.props.date === activity2.props.date) { return 0; }
+        if (activity1.props.date > activity2.props.date) { return -1; }
+        if (activity1.props.date < activity2.props.date) { return 1; }
+        return 0; // Add explicit return for all code paths
+      })
+    })
+  }, [])
 
   // Fetch all public events from Github on load
   useEffect(() => {
@@ -33,7 +58,7 @@ const Activities = () => {
         // Set the list of github activities to indicate they have loaded
         setGithubActivities(githubActivities);
       })
-  }, []);
+  }, [addActivities]);
 
   /**
    * Returns whether the component is loading activities
@@ -45,37 +70,13 @@ const Activities = () => {
   }
 
   /**
-   * Adds a list of activity components to the list of days
-   *
-   * @param activities The list of activity components to add
-   */
-  const addActivities = (activities) => {
-    setActivityDays(
-      Object.values(
-        activities.reduce((activityMap, activity) => {
-          const date = activity.props.date.format('YYYY-MM-DD');
-          if (!activityMap.hasOwnProperty(date)) {
-            activityMap[date] = <ActivityDay date={date} activities={[]}/>;
-          }
-          activityMap[date].props.activities.push(activity)
-          return activityMap
-        }, activityDays)
-      ).sort((activity1, activity2) => {
-        if (activity1.props.date === activity2.props.date) { return 0; }
-        if (activity1.props.date > activity2.props.date) { return -1; }
-        if (activity1.props.date < activity2.props.date) { return 1; }
-      })
-    )
-  }
-
-  /**
    * Removes all activity components of the specified type from the list of days
    *
    * @param activities The the of activity components to remove
    */
   const removeActivities = (activityType) => {
     const updatedActivityDays = [];
-    activityDays.map((activityDay) => {
+    activityDays.forEach((activityDay) => {
       const updatedActivities = activityDay.props.activities.filter((activity) => {
         return activity.props.activityType !== activityType
       });
@@ -107,7 +108,7 @@ const Activities = () => {
       <div className='ActivitiesSelect'>
         <div className='ActivitiesSelectCheckbox'>
           <input type='checkbox' id='githubCheckbox' checked={githubSelected} onChange={handleGithubSelectChange}/>
-          <label for='githubCheckbox'>Github</label>
+          <label htmlFor='githubCheckbox'>Github</label>
         </div>
       </div>
 
@@ -139,8 +140,8 @@ const ActivityDay = (props) => {
 }
 
 const GithubActivity = (props) => {
-  // Destructure actor, date, repo, and type from props
-  const { actor, date, repo, type } = props;
+  // Destructure actor, repo, and type from props
+  const { actor, repo, type } = props;
 
   return (
     <div className='GithubActivity'>
@@ -154,7 +155,7 @@ const GithubActivity = (props) => {
         {type}
       </div>
       <div className="Repository">
-        <a href={repo.url} target='_blank'>
+        <a href={repo.url} target='_blank' rel='noreferrer'>
           {repo.name}
         </a>
       </div>
