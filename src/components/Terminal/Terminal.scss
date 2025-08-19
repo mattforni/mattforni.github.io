@@ -1,0 +1,176 @@
+@import '../../themes/default';
+
+.Terminal {
+  background-color: #0a0a0a;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Courier New', monospace;
+  margin: 20px auto;
+  max-width: 1200px;
+  min-width: 75vw;
+  overflow: hidden;
+  border: 1px solid #333;
+  display: block;
+
+  .TerminalHeader {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border-bottom: 1px solid #444;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    position: relative;
+
+    .TerminalButtons {
+      display: flex;
+      gap: 8px;
+      margin-right: 20px;
+
+      .TerminalButton {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        border: 1px solid #555;
+
+        &.TerminalButtonClose {
+          background-color: #ff5f56;
+          &:hover { background-color: #ff4444; }
+        }
+
+        &.TerminalButtonMinimize {
+          background-color: #ffbd2e;
+          &:hover { background-color: #ffcc33; }
+        }
+
+        &.TerminalButtonMaximize {
+          background-color: #27ca3f;
+          &:hover { background-color: #33dd4a; }
+        }
+      }
+    }
+
+    .TerminalTitle {
+      color: #ccc;
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+  }
+
+  .TerminalBody {
+    background-color: #0a0a0a;
+    color: #00ff00;
+    padding: 20px;
+    min-height: 400px;
+    font-size: 14px;
+    line-height: 1.6;
+
+    .TerminalLine {
+      display: flex;
+      align-items: center;
+      margin-bottom: 8px;
+      min-height: 20px;
+
+      .TerminalPrompt {
+        color: #00ff00;
+        font-weight: bold;
+        margin-right: 8px;
+        user-select: none;
+      }
+
+      .TerminalCommand {
+        color: #ffffff;
+        font-weight: 500;
+      }
+
+      .TerminalCursor {
+        color: #00ff00;
+        animation: blink 1s infinite;
+        margin-left: 2px;
+        font-weight: bold;
+      }
+    }
+
+    .TerminalOutput {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #111;
+      border-left: 3px solid #00ff00;
+      border-radius: 4px;
+
+      .AboutSection {
+        .AboutHeader {
+          margin-bottom: 12px;
+          display: flex;
+          align-items: baseline;
+
+          .AboutLabel {
+            color: #00ff00;
+            font-weight: bold;
+            min-width: 120px;
+            margin-right: 10px;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.5px;
+          }
+        }
+
+        .AboutDescription {
+          margin-top: 20px;
+          padding-top: 15px;
+          border-top: 1px solid #333;
+          color: #cccccc;
+          line-height: 1.7;
+          text-align: justify;
+
+          p {
+            margin-bottom: 15px;
+          }
+
+          a {
+            color: #00ff00;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.2s ease;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .Terminal {
+    margin: 10px;
+    width: 95vw;
+    min-width: 300px;
+
+    .TerminalBody {
+      padding: 15px;
+      font-size: 13px;
+
+      .TerminalOutput {
+        .AboutSection {
+          .AboutHeader {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .AboutLabel {
+              margin-bottom: 5px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

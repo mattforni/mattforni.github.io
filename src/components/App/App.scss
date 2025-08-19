@@ -5,12 +5,9 @@ html, body, div#root {
 }
 
 div.App {
-  display: grid;
-  grid-template-columns: auto;
-  grid-template-rows: $layout-header-height auto;
-  column-gap: 0;
-  row-gap: 0;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
   // Default all margin and padding to 0
   * {
@@ -28,22 +25,13 @@ div.App {
     }
   }
 
-  div.Header {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: 2;
-  }
-
   div.Content {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 2;
-    grid-row-end: 4;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
   }
 
   div.Footer {
-    grid-column-start: 1;
-    grid-column-end: 3;
+    flex-shrink: 0;
   }
 }
