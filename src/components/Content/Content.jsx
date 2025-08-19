@@ -1,4 +1,4 @@
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Routes, Route, Navigate} from "react-router-dom";
 
 import './Content.scss';
 import About from "../About";
@@ -11,15 +11,11 @@ import Activities from "../Activities";
 const Content = () => {
   return (
     <div className='Content'>
-      <Switch>
-        <Route exact path='/'>
-          <About />
-        </Route>
-        <Route exact path='/activities'>
-          <Activities />
-        </Route>
-        <Redirect from="*" to="/" />
-      </Switch>
+      <Routes>
+        <Route path='/' element={<About />} />
+        <Route path='/activities' element={<Activities />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
     </div>
   );
 }

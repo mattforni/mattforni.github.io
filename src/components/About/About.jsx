@@ -1,5 +1,4 @@
 import './About.scss';
-import PortraitImage from "../../assets/images/sand-boarding.jpg";
 
 const Headshot = () => {
   return (
@@ -20,11 +19,11 @@ const Headshot = () => {
 }
 
 const About = () => {
-  const linkAmazon = <a href='https://amazon.com' target='_blank' class='LinkAmazon'>Amazon</a>;
-  const linkGremlin = <a href='https://gremlin.com' target='_blank' class='LinkGremlin'>Gremlin</a>;
-  const linkSalesforce = <a href='https://salesforce.com' target='_blank' class='LinkSalesforce'>Salesforce</a>;
-  const linkFindForni = <a href='http://findforni.info/' target='_blank'>check out his Garmin live map</a>;
-  const linkGoodbyeGremlin = <a href='https://medium.com/@callmeforni/goodbye-gremlin-hello-world-b119abd3d370' target='_blank'>left Gremlin</a>;
+  const linkAmazon = <a href='https://amazon.com' target='_blank' rel='noreferrer' className='LinkAmazon'>Amazon</a>;
+  const linkGremlin = <a href='https://gremlin.com' target='_blank' rel='noreferrer' className='LinkGremlin'>Gremlin</a>;
+  const linkSalesforce = <a href='https://salesforce.com' target='_blank' rel='noreferrer' className='LinkSalesforce'>Salesforce</a>;
+  const linkFindForni = <a href='http://findforni.info/' target='_blank' rel='noreferrer'>check out his Garmin live map</a>;
+  const linkGoodbyeGremlin = <a href='https://medium.com/@callmeforni/goodbye-gremlin-hello-world-b119abd3d370' target='_blank' rel='noreferrer'>left Gremlin</a>;
 
   return (
     <div className='About'>
