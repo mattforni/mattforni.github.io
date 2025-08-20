@@ -44,11 +44,6 @@ const Footer: React.FC = () => {
           icon={<Github size={24} className="SocialIcon" />}
           link='https://github.com/mattforni'
         />
-        <SocialLink
-          name='Stack Overflow'
-          icon={<ExternalLink size={24} className="SocialIcon" />}
-          link='http://stackoverflow.com/users/2861181/mattforni'
-        />
       </div>
     </div>
   );
