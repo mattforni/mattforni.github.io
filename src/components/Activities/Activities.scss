@@ -1,4 +1,4 @@
-@import '../../themes/default';
+@use '../../themes/default' as *;
 
 div.Activities {
   @include border-radius($space-medium);
@@ -27,7 +27,7 @@ div.Activities {
       &>:first-child {
         margin-top: $space-large;
       }
-      
+
       div.ActivityDayDate {
         border-bottom: 1px solid $color-black;
         font-size: $size-medium;
