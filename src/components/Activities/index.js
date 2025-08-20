@@ -1,3 +1,1 @@
-import Activities from './Activities';
-
-export default Activities;
+export { default } from './Activities.tsx';
