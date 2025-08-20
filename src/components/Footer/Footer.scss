@@ -5,39 +5,47 @@ div.Footer {
   background-color: $color-black;
   color: $color-white;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   padding: $space-medium;
-
-  div.EmailLink {
-    align-items: center;
-    dispay: flex;
-    padding: $space-small;
-    a {
-      color: $color-white;
-    }
-    span {
-      padding: 0 $space-small;
-    }
-  }
 
   div.SocialLinks {
     align-items: center;
     display: flex;
-    height: 100%;
+    gap: $space-medium;
+    flex-wrap: wrap;
+    justify-content: center;
 
     div.SocialLink {
-      border-bottom: 1px solid white;
-      height: $space-x-large;
-      margin: 0 $space-small;
-      width: $space-x-large;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: $space-small;
+      padding: $space-medium;
+      border-radius: $space-small;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      min-width: 80px;
 
       &:hover {
-        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
       }
 
-      & > img {
-        height: 100%;
-        width: 100%;
+      .SocialIcon {
+        color: $color-white;
+        stroke-width: 1.5;
+        transition: color 0.2s ease;
+      }
+
+      .SocialLinkName {
+        font-size: $size-small;
+        text-align: center;
+        color: $color-white;
+        font-weight: 500;
+      }
+
+      &:hover .SocialIcon {
+        color: #00ff00;
       }
     }
   }

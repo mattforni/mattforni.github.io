@@ -1,77 +1,27 @@
-// Define opacities
-$opacity-full: 1.0;
-$opacity-ninety: 0.9;
-$opacity-seventy-five: 0.75;
+// Define opacity (only keeping what's used)
 $opacity-half: 0.5;
-$opacity-twenty-five: 0.25;
-$opacity-ten: 0.1;
 
-// Define colors
+// Define colors (only keeping what's used)
 $color-black: #000;
-$color-blue-dark: #092340;
-$color-blue-salesforce: #47a1db;
-$color-gray: #797979;
-$color-gray-light: #b3b3b3;
-$color-gray-dark: #333;
-$color-green-gremlin: #4d9985;
-$color-orange-amazon: #e69e4a;
-$color-red: #f00;
-$color-red-dark: #c73c32;
 $color-white: #fff;
 $color-white-with-opacity-half: rgba(255, 255, 255, $opacity-half);
 
-// Define spaces
-$space-x-small: 3px;
+// Define spaces (only keeping what's used)
 $space-small: 5px;
 $space-medium: 10px;
 $space-large: 15px;
 $space-x-large: 25px;
-$space-xx-large: 50px;
-$space-xxx-large: 75px;
 
-// Define sizes
+// Define sizes (only keeping what's used)
 $size-small: 0.8rem;
-$size-normal: 1rem;
 $size-medium: 1.5rem;
-$size-large: 2.25rem;
-$size-x-large: 4rem;
-$size-xx-large: 6rem;
 
-// Define timings
-$timing-fast: 0.3s;
-$timing-normal: 1s;
-
-// Define layout properties
+// Define layout properties (only keeping what's used)
 $layout-content-width: 800px;
-$layout-header-height: 300px;
 
-// Define polyfill mixins
+// Define polyfill mixins (only keeping what's used)
 @mixin border-radius($radius: $space-small) {
   border-radius: $radius;
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
-
-}
-
-@mixin box-shadow($color: $color-black, $horizontal-offset: $space-small, $vertical-offset: $space-small, $blur-radius: $space-small) {
-  box-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
-  -webkit-box-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
-  -moz-box-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
-}
-
-@mixin linear-gradient($start-color-and-stop, $end-color-and-stop, $direction: to bottom) {
-  background-image: linear-gradient($direction, $start-color-and-stop, $end-color-and-stop);
-  background-image: -webkit-linear-gradient($direction, $start-color-and-stop, $end-color-and-stop);
-  background-image: -moz-linear-gradient($direction, $start-color-and-stop, $end-color-and-stop);
-  background-image: -ms-linear-gradient($direction, $start-color-and-stop, $end-color-and-stop);
-}
-
-@mixin rotate($degrees) {
-  transform: rotate($degrees);
-}
-
-@mixin text-shadow($color: $color-black, $horizontal-offset: $space-small, $vertical-offset: $space-small, $blur-radius: $space-small) {
-  text-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
-  -webkit-text-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
-  -moz-text-shadow: $horizontal-offset $vertical-offset $blur-radius $color;
 }

@@ -1,4 +1,5 @@
-import {Routes, Route, Navigate} from "react-router-dom";
+import React from 'react';
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import './Content.scss';
 import About from "../About";
@@ -8,7 +9,7 @@ import Activities from "../Activities";
  * The Content component represent the main content window in the application.
  * @returns {JSX.Element} The main content of the application.
  */
-const Content = () => {
+const Content: React.FC = () => {
   return (
     <div className='Content'>
       <Routes>
@@ -18,6 +19,6 @@ const Content = () => {
       </Routes>
     </div>
   );
-}
+};
 
 export default Content;
