@@ -1,5 +1,5 @@
 import React from 'react';
-import { Linkedin, Github, Mail, ExternalLink } from 'lucide-react';
+import { Linkedin, Github, Mail } from 'lucide-react';
 import './Footer.scss';
 
 interface SocialLinkProps {
