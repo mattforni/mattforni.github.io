@@ -1,0 +1,22 @@
+# Matt "Forni" Fornaciari
+
+> Personal site of Matthew "Forni" Fornaciari: engineer in Denver, Colorado. Co-founder and CTO of Gremlin (est. 2016), where chaos engineering became a discipline. Earlier: Amazon and Salesforce. Later: climate technology at QuitCarbon and Zero Homes. Today he consults through Reliably Yours and writes essays at Atelic Action. Brown University, applied mathematics and computer science.
+
+Ethos: been there before, happy to help. Reliability is how he builds; altruism is why.
+
+## Pages
+
+- [Home](https://home.mattforni.com/): who Forni is, in brief
+- [Story](https://home.mattforni.com/story): the career narrative from Brown through Gremlin and climate tech to Reliably Yours
+- [Writing](https://home.mattforni.com/writing): essays, with the archive at his Substack
+
+## Elsewhere
+
+- [Atelic Action (Substack)](https://forni.substack.com): essays on doing things that are not for anything
+- [LinkedIn](https://www.linkedin.com/in/mattforni/)
+- [GitHub](https://github.com/mattforni)
+- [goodbye("Gremlin") // Hello world (Medium)](https://medium.com/@callmeforni/goodbye-gremlin-hello-world-b119abd3d370): his farewell essay after six years building Gremlin
+
+## Contact
+
+- Email: mattforni@gmail.com

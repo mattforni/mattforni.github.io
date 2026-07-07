@@ -1,104 +1,44 @@
-# Matt Forni's Personal Website
+# mattforni.com
 
-This is my personal website built with React, featuring information about me, my activities, and various projects.
+The personal site of Matt "Forni" Fornaciari, served at [home.mattforni.com](https://home.mattforni.com/).
 
-## Deployment
+A canonical, evergreen reputation home: when a person, a search engine, or an AI assistant asks who Matt Fornaciari is, this site is the answer they find and cite. Warm editorial typography with a terminal wink, honoring the site's previous life as a full screen `whoami`.
 
-This website is automatically deployed to GitHub Pages using GitHub Actions. The deployment workflow:
+## Structure
 
-1. **Triggers**: Automatically runs on every push to the `main` branch
-2. **Builds**: Creates a production build of the React app
-3. **Deploys**: Automatically deploys to GitHub Pages at [https://mattforni.github.io](https://mattforni.github.io)
+Pure static HTML. No framework, no build step.
 
-### Manual Deployment
+```text
+site/            # The deployable site, published as-is
+├── index.html   # Home
+├── story/       # The career narrative
+├── writing/     # Essay index (Atelic Action)
+├── 404.html     # Terminal-flavored not-found page
+├── styles.css   # Shared stylesheet
+├── favicon.svg
+├── robots.txt
+├── sitemap.xml
+└── llms.txt     # Site description for answer engines
+design/          # The Claude Design export the site was assembled from
+```
 
-If you need to deploy manually, you can:
-1. Push your changes to the `main` branch
-2. The GitHub Action will automatically trigger
-3. Check the Actions tab in your repository to monitor the deployment
+Design source of truth: [Claude Design project](https://claude.ai/design/p/5a6982d7-dc9e-4c32-950c-736d5fc86326) (July 2026).
 
-## TODO
-- ~~Merge the old website and the new website~~
-- Investigate grid layouts instead of flex
-- (Optional) Update the core layout to use a grid layout
-- Create a `Media` page with Podcasts & Articles
+## Deploy
 
-# Considerations
-- Consider using [`yahoo-finance`](https://www.npmjs.com/package/yahoo-finance) for some investment analysis
-- Create a National Park visitation page to experiment with visualization libraries
-- Use the  [Strava API](https://developers.strava.com/docs/reference/)  to pull in activities
-- Use the  [Goodreads API](https://www.goodreads.com/api)  to pull in books
-- Use the  [Letterboxd API](http://api-docs.letterboxd.com/)  to pull in movies
-- Include your  [about README](https://github.com/mattforni/about)
-- Use the  [GitHub API](https://docs.github.com/en/rest)  to pull in commits
+Pushes to `main` publish `site/` to GitHub Pages via `.github/workflows/deploy.yml`. The custom domain (`home.mattforni.com`) is configured in the repository's Pages settings and at the DNS host; no CNAME file needed with the Actions-based deploy.
 
-# Getting Started with Create React App
+## Local Preview
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+```bash
+python3 -m http.server 8080 --directory site
+```
 
-## Available Scripts
+Directory-style routes (`/story`, `/writing`) resolve the same way locally as on Pages.
 
-In the project directory, you can run:
+## Notes and Deferred Items
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- **Life beyond work page**: the original brief sketched a fourth page (mountains, kitchen, food access volunteering). The design consolidated to three pages; add it later if it earns its place, and extend `sitemap.xml` and the nav when it lands.
+- **Writing page upkeep**: essay cards are hand-maintained. When a new essay ships on Substack, add a card to `site/writing/index.html` and a `ListItem` to its JSON-LD.
+- **og:image**: no social share image yet. A simple cream card with the `forni ~` wordmark would do.
+- **Root domain**: entity SEO would be slightly stronger on `mattforni.com` than on the `home.` subdomain. If that move ever happens, update canonicals, JSON-LD `@id`s, `sitemap.xml`, `robots.txt`, and `llms.txt` together.
