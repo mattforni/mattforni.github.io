@@ -1,7 +1,7 @@
-:root{--accent:#8a5a2b}
+:root{--accent:#8a5a2b;--mono:'IBM Plex Mono',ui-monospace,monospace}
 body{margin:0;background:#f6f1e7;color:#23201a;font-family:'Newsreader',Georgia,serif;font-size:19px;line-height:1.65;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:none}a:hover{color:#23201a;text-decoration:underline}
-.mono{font-family:'IBM Plex Mono',ui-monospace,monospace}
+.mono{font-family:var(--mono)}
 .wrap{max-width:760px;margin:0 auto;padding:0 28px}
 
 /* utilities (formerly injected by the design runtime) */
@@ -11,30 +11,29 @@ a{color:var(--accent);text-decoration:none}a:hover{color:#23201a;text-decoration
 .m0{margin:0}
 .mt8{margin-top:8px}
 .mt12{margin-top:12px}
-.fs12{font-size:12px}
 .fs14{font-size:14px}
 
 .nav{padding:28px 0 0}
-.navname{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:14px;font-weight:500;color:#23201a;letter-spacing:.02em}
+.navname{font-family:var(--mono);font-size:14px;font-weight:500;color:#23201a;letter-spacing:.02em}
 .navlinks{gap:26px}
-.navlink{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;color:#5b564c}
+.navlink{font-family:var(--mono);font-size:13px;color:#5b564c}
 .navlink:hover{color:var(--accent)}
 .navon{color:var(--accent)}
 
 .hero{padding:84px 0 8px}
-.eyebrow{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;letter-spacing:.06em;color:var(--accent);font-weight:500;margin:0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--accent);font-weight:500;margin:0}
 .h1{font-size:clamp(48px,8vw,72px);line-height:1;font-weight:500;letter-spacing:-.015em;margin:14px 0 0}
 .h1sub{font-size:clamp(40px,6.5vw,58px);line-height:1.02}
 .lead{font-size:clamp(21px,2.8vw,26px);font-weight:300;line-height:1.45;color:#3d3931;max-width:26em;margin:24px 0 0}
 .leadsub{font-size:clamp(20px,2.6vw,24px);max-width:27em;margin-top:22px}
 .lead em{color:#23201a}
-.pron{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;color:#8b8577;margin:18px 0 0}
+.pron{font-family:var(--mono);font-size:13px;color:#8b8577;margin:18px 0 0}
 
 .sect{padding-top:44px}
 .sect p{margin:12px 0 0;color:#33302a;max-width:33em}
 .big{font-size:19.5px}
 
-.term{background:#262219;color:#d8d0c0;border-radius:6px;padding:20px 24px;margin:14px 0 0;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13px;line-height:2;overflow-x:auto;list-style:none}
+.term{background:#262219;color:#d8d0c0;border-radius:6px;padding:20px 24px;margin:14px 0 0;font-family:var(--mono);font-size:13px;line-height:2;overflow-x:auto;list-style:none}
 .term a{color:#9ccbb0}.term a:hover{color:#c4e3d2}
 .trow{display:grid;grid-template-columns:100px 128px 1fr;gap:0 18px}
 .tp{color:#9ccbb0}
@@ -44,7 +43,7 @@ a{color:var(--accent);text-decoration:none}a:hover{color:#23201a;text-decoration
 .essay:hover{text-decoration:none;color:inherit}
 .essay:hover .ettl{color:var(--accent)}
 .elist{margin-top:18px}
-.esrc{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:11.5px;color:#8b8577}
+.esrc{font-family:var(--mono);font-size:11.5px;color:#8b8577}
 .ettl{font-size:26px;font-weight:500;letter-spacing:-.01em;margin:6px 0 8px;transition:color .15s}
 .eex{font-size:17px;color:#5b564c;max-width:34em;margin:0}
 
@@ -53,12 +52,12 @@ a{color:var(--accent);text-decoration:none}a:hover{color:#23201a;text-decoration
 .footer{margin-top:72px;border-top:1px solid #d8d0c0;background:#f1ebdf;padding:36px 0 48px}
 .footrow{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .foothello{font-size:17.5px;font-style:italic;color:#5b564c}
-.footmail{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:13.5px;font-style:normal;margin-left:12px}
+.footmail{font-family:var(--mono);font-size:13.5px;font-style:normal;margin-left:12px}
 .icons{display:flex;gap:18px;align-items:center}
 .icon{color:#5b564c;display:inline-flex}
 .icon:hover{color:var(--accent)}
 .icon svg{width:21px;height:21px;display:block}
-.exit{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:12px;color:#a29a89;margin-top:30px}
+.exit{font-family:var(--mono);font-size:12px;color:#a29a89;margin-top:30px}
 
 @media (max-width:640px){
 .hero{padding:56px 0 4px}

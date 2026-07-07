@@ -1,7 +1,22 @@
 {
-  "framework": null,
-  "buildCommand": null,
   "outputDirectory": "site",
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/activities", "destination": "/", "permanent": true }
+  ],
+  "headers": [
+    {
+      "source": "/styles.css",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=3600, stale-while-revalidate=86400" }
+      ]
+    },
+    {
+      "source": "/(favicon.svg|favicon.ico|apple-touch-icon.png)",
+      "headers": [
+        { "key": "Cache-Control", "value": "public, max-age=86400, stale-while-revalidate=604800" }
+      ]
+    }
+  ]
 }

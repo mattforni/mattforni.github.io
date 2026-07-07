@@ -22,13 +22,13 @@ site/            # The deployable site, published as-is
 design/          # The Claude Design export the site was assembled from
 ```
 
-Design source of truth: [Claude Design project](https://claude.ai/design/p/5a6982d7-dc9e-4c32-950c-736d5fc86326) (July 2026).
+Design provenance: [Claude Design project](https://claude.ai/design/p/5a6982d7-dc9e-4c32-950c-736d5fc86326) (July 2026). The live pages in `site/` are the source of truth; they have deliberately diverged from the export (real essay titles, cascade fixes, hand-authored SEO heads). Do not regenerate pages from `design/`.
 
 ## Deploy
 
 Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). `vercel.json` at the repo root declares the site as buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production via the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` points at Vercel via a CNAME at the DNS host.
 
-The legacy GitHub Pages workflow (`.github/workflows/deploy.yml`) remains only until DNS cutover to Vercel completes, then it should be removed.
+The legacy GitHub Pages workflow (`.github/workflows/deploy.yml`) remains only until DNS cutover to Vercel completes. Retiring it takes two steps: delete the workflow AND disable Pages in the repo settings. Deleting the workflow alone leaves the last-deployed snapshot serving (and slowly going stale) at mattforni.github.io forever.
 
 ## Local Preview
 
@@ -43,4 +43,5 @@ Directory-style routes (`/story`, `/writing`) resolve the same way locally as on
 - **Life beyond work page**: the original brief sketched a fourth page (mountains, kitchen, food access volunteering). The design consolidated to three pages; add it later if it earns its place, and extend `sitemap.xml` and the nav when it lands.
 - **Writing page upkeep**: essay cards are hand-maintained. When a new essay ships on Substack, add a card to `site/writing/index.html` and a `ListItem` to its JSON-LD.
 - **og:image**: no social share image yet. A simple cream card with the `forni ~` wordmark would do.
-- **Root domain**: entity SEO would be slightly stronger on `mattforni.com` than on the `home.` subdomain. If that move ever happens, update canonicals, JSON-LD `@id`s, `sitemap.xml`, `robots.txt`, and `llms.txt` together.
+- **Root domain**: entity SEO would be slightly stronger on `mattforni.com` than on the `home.` subdomain. If that move ever happens, grep `site/` for `home.mattforni.com` and fix every hit (canonicals, og:url, JSON-LD `@id`s and `url`s, `sitemap.xml`, `robots.txt`, `llms.txt`), and keep `home.mattforni.com` alive as a permanent 301 to the root so existing backlinks, index entries, and AI citations follow.
+- **Self-hosted fonts**: the Google Fonts stylesheet is the only render-blocking third-party request and the dominant cold-load LCP cost. Self-hosting the two families as preloaded woff2 with a metric-compatible fallback (`size-adjust`/`ascent-override`) would remove the extra connections and the font-swap layout shift.
