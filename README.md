@@ -26,15 +26,17 @@ Design source of truth: [Claude Design project](https://claude.ai/design/p/5a698
 
 ## Deploy
 
-Pushes to `main` publish `site/` to GitHub Pages via `.github/workflows/deploy.yml`. The custom domain (`home.mattforni.com`) is configured in the repository's Pages settings and at the DNS host; no CNAME file needed with the Actions-based deploy.
+Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). `vercel.json` at the repo root declares the site as buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production via the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` points at Vercel via a CNAME at the DNS host.
+
+The legacy GitHub Pages workflow (`.github/workflows/deploy.yml`) remains only until DNS cutover to Vercel completes, then it should be removed.
 
 ## Local Preview
 
 ```bash
-python3 -m http.server 8080 --directory site
+npx serve site
 ```
 
-Directory-style routes (`/story`, `/writing`) resolve the same way locally as on Pages.
+Directory-style routes (`/story`, `/writing`) resolve the same way locally as on Vercel.
 
 ## Notes and Deferred Items
 

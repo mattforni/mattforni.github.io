@@ -11,14 +11,14 @@ The personal site of Matt "Forni" Fornaciari, served at https://home.mattforni.c
 There is nothing to build, lint, or test. Local preview:
 
 ```bash
-python3 -m http.server 8080 --directory site
+npx serve site
 ```
 
-Directory routes (`/story`, `/writing`) resolve the same locally as on GitHub Pages.
+Directory routes (`/story`, `/writing`) resolve the same locally as on Vercel.
 
 ## Deploy
 
-Every push to `main` publishes `site/` verbatim to GitHub Pages via `.github/workflows/deploy.yml` (pull requests run the artifact build as a check without deploying). The custom domain is configured in the repo's Pages settings and DNS, not in a CNAME file. **A merge to main is an immediate production deploy.**
+Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). Root `vercel.json` declares buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production through the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` is a CNAME to Vercel. **A merge to main is an immediate production deploy.** The legacy GitHub Pages workflow survives only until DNS cutover is confirmed, then gets deleted.
 
 ## Structure and Conventions
 
