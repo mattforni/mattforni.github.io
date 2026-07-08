@@ -28,7 +28,7 @@ Design provenance: [Claude Design project](https://claude.ai/design/p/5a6982d7-d
 
 Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). `vercel.json` at the repo root declares the site as buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production via the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` points at Vercel via a CNAME at the DNS host.
 
-DNS cutover to Vercel completed 2026-07-07; the legacy GitHub Pages workflow has been removed and Pages should remain disabled in the repo settings.
+DNS cutover to Vercel completed 2026-07-07; the legacy GitHub Pages workflow has been removed, Pages stays disabled in the repo settings, and the repo was renamed from mattforni.github.io to mattforni.
 
 ## Local Preview
 

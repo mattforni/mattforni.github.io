@@ -18,7 +18,7 @@ Directory routes (`/story`, `/writing`) resolve the same locally as on Vercel.
 
 ## Deploy
 
-Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). Root `vercel.json` declares buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production through the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` is a CNAME to Vercel. **A merge to main is an immediate production deploy.** GitHub Pages was retired at DNS cutover (2026-07-07) and must stay disabled in repo settings so the old snapshot never serves stale content at mattforni.github.io.
+Hosted on Vercel as `ryllc/mattforni-com` (Vercel no longer allows personal accounts as a project scope, so it lives on the `ryllc` team). Root `vercel.json` declares buildless static output from `site/` with clean URLs. Pushes to `main` deploy to production through the Vercel git integration; pull requests get preview deploys. `home.mattforni.com` is a CNAME to Vercel. **A merge to main is an immediate production deploy.** GitHub Pages was retired at DNS cutover (2026-07-07) and must stay disabled in repo settings. The repo was renamed from mattforni.github.io to mattforni after the cutover.
 
 ## Structure and Conventions
 
